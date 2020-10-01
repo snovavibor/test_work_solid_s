@@ -4,10 +4,14 @@
 class View 
 {
 
-    public function __construct($view)
+    protected $param;
+
+    public function __construct($view,$param)
     {
+        //TO DO: to check $param is empty
         
-        //require(__DIR__.'../../../Ressource/Views/'.$view.'.php');
+        $this->param = $param;
+       
         require(__DIR__.'../../../Ressource/Views/default.php');
 
     }

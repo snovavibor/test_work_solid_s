@@ -4,8 +4,8 @@
  abstract class Controller 
 {
     
-    public function view($string){
+    public function view($string,$param=null){
         
-        new View($string);
+        new View($string,$param);
     }
 }
