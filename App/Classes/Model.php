@@ -35,11 +35,11 @@ public function all()
     return $rows;
 }
 
-public function where($id=false)
+public function where($id)
 {
     
     
-        if($id !==false && is_numeric($id)){
+        if(is_numeric($id)){
             
             $sql = "SELECT * FROM ".$this->table." WHERE `id` = :id";
              $result = $this->connect->prepare($sql);
