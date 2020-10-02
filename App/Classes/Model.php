@@ -37,7 +37,7 @@ public function all()
 
 public function where($id)
 {
-    
+    $id = (int)$id;
     
         if(is_numeric($id)){
             
@@ -52,20 +52,51 @@ public function where($id)
             
             return [];
         }
-
-    
-    
-    
-    
-    
-    
      
 }
 
-public function create()
+/**
+ * @param array $param
+ * @param array $value 
+ */
+public function create($param,$value)
 {
     
+    $sql = $this->makeStringforSql($param);
+   
+    $result = $this->connect->prepare($sql);
+    
+    $res = $result->execute($value);
+    
+    //TO DO:придумать что делать после успешной записи
+    
 }
+
+
+public function makeStringforSql($fields)
+{
+
+    $sql = "INSERT INTO ".$this->table;
+
+    $sql .= " (`".implode("`, `", array_keys($fields))."`)";
+   
+    $sql .= " VALUES (";
+
+    for($i=0; $i<count($fields); $i++){
+
+        $sql .='?';
+        if($i != ( count($fields)-1) ){
+
+            $sql .=',';
+        }
+        
+    }
+    $sql .= ");";
+
+    return $sql;
+
+}
+
 
 public function update()
 {
