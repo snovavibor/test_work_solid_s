@@ -7,8 +7,8 @@ return [
         'action'=>'index'
     ],
 
-    'contacts'=>[
-        'controller'=>'contacts',
-        'action'=>'index'
+    'form'=>[
+        'controller'=>'main',
+        'action'=>'add'
     ],
 ];

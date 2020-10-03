@@ -63,8 +63,9 @@ public function create($param,$value)
 {
     
     $sql = $this->makeStringforSql($param);
-   
+    
     $result = $this->connect->prepare($sql);
+    
     
     $res = $result->execute($value);
     
@@ -92,6 +93,7 @@ public function makeStringforSql($fields)
         
     }
     $sql .= ");";
+    
 
     return $sql;
 
