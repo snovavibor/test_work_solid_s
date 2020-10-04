@@ -105,9 +105,15 @@ public function update()
     
 }
 
-public function delete()
+public function delAll()
 {
-    
+   
+
+    $sql = "DELETE FROM ".$this->table;
+    $result = $this->connect->exec($sql);
+
+   
+  
 }
 
 

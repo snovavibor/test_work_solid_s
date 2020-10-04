@@ -43,4 +43,11 @@ class MainController extends Controller implements MakeValueInterface
         
         return array_values($valueForm);
     }
+
+    public function delall(){
+
+        $model = new FieldModel();
+        $model->delAll();
+
+    }
 }

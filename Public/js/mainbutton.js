@@ -5,7 +5,7 @@ $(document).ready(function () {
        
             $( 'form' ).submit( function( e ) {
                 
-                        
+                       
                 e.preventDefault();
                 
                 $.ajax({
@@ -24,6 +24,20 @@ $(document).ready(function () {
 
 
 
-    });   
+    });  
+    
+    $('#delTree').on('click', function(){
+        //alert($(this).text());
+
+        $.ajax({
+            type:"post",
+            url:"delall",
+            contentType:false,
+            cache: false,
+            success: function(result){
+                console.log(result);
+            }
+        });
+    })
 
 });

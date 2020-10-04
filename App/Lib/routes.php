@@ -11,4 +11,9 @@ return [
         'controller'=>'main',
         'action'=>'add'
     ],
+
+    'delall'=>[
+        'controller'=>'main',
+        'action' =>'delall'
+    ],
 ];

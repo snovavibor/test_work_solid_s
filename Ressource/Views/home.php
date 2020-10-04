@@ -14,6 +14,7 @@
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#mainBtnModal">
     Create root
     </button>
+    <button type="button" class="btn btn-danger" id="delTree"> Delete all tree </button>
     
 
     <h3>in BD now:</h3>
@@ -27,7 +28,7 @@
     }else{
       
       //TO DO: make handler for errors
-      die('ERROR ::: id no exits'); 
+      echo('ERROR ::: id no exits'); 
     }
     
     ?>
