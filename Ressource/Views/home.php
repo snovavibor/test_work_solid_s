@@ -6,36 +6,44 @@
   <div class="row">
     <div class="col">
 
-   
+    <button type="button" class="btn btn-info" id="create_root"> Create root </button>
+    </div>
+</div>
+</div>
 
-      
 
-<!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#mainBtnModal">
-    Create root
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+    
+    
+    
+    
+  <div class="root <?= (count($param) ==0) ? 'd-none':'' ?> mt-3" id="root_make_block">
+  <!-- Button trigger modal -->
+    <button class="btn btn-primary">Root</button>
+    <button type="button" class="btn btn-primary add_field"  data-target="#mainBtnModal" id="bat">
+    +
     </button>
-    <button type="button" class="btn btn-danger" id="delTree"> Delete all tree </button>
+    <button type="button" class="btn btn-danger" id="delTree"> - </button>
     
 
-    <h3>in BD now:</h3>
-    <?php
-
-    if($this->param){
-
-        foreach ($this->param as $row) {
-            echo "id: {$row->id}, name:{$row->name} <br>";
-                }
-    }else{
-      
-      //TO DO: make handler for errors
-      echo('ERROR ::: id no exits'); 
-    }
     
-    ?>
+    
+
+    <?php require_once(__DIR__.'../../../Ressource/Views/content.php')?>
+    
+    
     </div>
    
     
+    </div>
   </div>
 </div>
     
     
+     <?php require_once(__DIR__.'../../../Ressource/Views/modal.php')?>
+
+
+     

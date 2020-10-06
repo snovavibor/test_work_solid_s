@@ -20,7 +20,7 @@
       </div>
 
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="close_modal">Close</button>
         <button type="submit" class="btn btn-primary" id="mainbtn">Add Field</button>
       </div>
     </div>
@@ -28,11 +28,5 @@
 </div>
 </form>
 
-<script>
 
-    <?php
-
-        require_once asset('/js/mainbutton.js');
-
-    ?>
-    </script>
+    

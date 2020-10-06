@@ -23,12 +23,17 @@ class MainController extends Controller implements MakeValueInterface
     public function add(){
 
         $valueForm = $_POST;
-      
-        $valueforCreate = $this->makeValueforCreate($valueForm);
        
+        $valueforCreate = $this->makeValueforCreate($valueForm);
+        
         $model = new FieldModel();
         
-         $model->create($valueForm,$valueforCreate);
+       $result = $model->create($valueForm,$valueforCreate);
+      
+       
+    header('Location:/');
+         
+         
 
     }
 
@@ -44,10 +49,20 @@ class MainController extends Controller implements MakeValueInterface
         return array_values($valueForm);
     }
 
+
+
+
     public function delall(){
 
         $model = new FieldModel();
         $model->delAll();
+        return $this->renderBlock('content',0);
+    }
 
+
+    private function renderBlock($view,$param)
+    {
+       
+       require(__DIR__.'../../../Ressource/Views/'.$view.'.php');
     }
 }

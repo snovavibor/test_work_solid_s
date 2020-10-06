@@ -11,8 +11,10 @@ class View
         //TO DO: to check $param is empty
         
         $this->param = $param;
+        //dd($view);
        
         require(__DIR__.'../../../Ressource/Views/default.php');
+        
 
     }
 }

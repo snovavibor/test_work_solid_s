@@ -66,8 +66,11 @@ public function create($param,$value)
     
     $result = $this->connect->prepare($sql);
     
-    
+   
     $res = $result->execute($value);
+
+    //return $res;
+    
     
     //TO DO:придумать что делать после успешной записи
     
@@ -94,7 +97,7 @@ public function makeStringforSql($fields)
     }
     $sql .= ");";
     
-
+    
     return $sql;
 
 }
@@ -111,7 +114,7 @@ public function delAll()
 
     $sql = "DELETE FROM ".$this->table;
     $result = $this->connect->exec($sql);
-
+    return $this->all();
    
   
 }
