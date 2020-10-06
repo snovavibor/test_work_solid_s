@@ -21,7 +21,6 @@ $(document).ready(function () {
                     type: $(this).attr('method'),
                     url: $(this).attr('action'),
                     data:new FormData(this),
-                    data:form,
                     contentType: false,
                     cache:false,
                     processData:false, 
