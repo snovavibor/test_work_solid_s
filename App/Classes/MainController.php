@@ -12,10 +12,11 @@ class MainController extends Controller implements MakeValueInterface
         $model = new FieldModel();
         
         //$rows = $model->where($id);
-        $rows = $model->all();
-
-              
-      
+        //$rows = $model->all();
+        
+       
+        $rows = $model->gg();
+    
         return $this->view('home',$rows);
     }
 
