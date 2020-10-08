@@ -2,7 +2,7 @@
 
 function rekursiveRender($rows)
 {
-  foreach($rows as $row)
+  foreach($rows as &$row)
   {
 ?>
     <div class="child ml-4">
@@ -10,7 +10,7 @@ function rekursiveRender($rows)
 <?php
 
     require(__DIR__.'../../../Ressource/Views/_contentField.php');
-    
+
     rekursiveRender($row->child);
 
 ?>
@@ -23,7 +23,7 @@ function rekursiveRender($rows)
 
     if($param){
 
-        foreach ($param as $row) {
+        foreach ($param as &$row) {
 ?>
 
           <div class="row p-2">

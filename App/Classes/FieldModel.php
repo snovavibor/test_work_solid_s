@@ -40,7 +40,7 @@ class FieldModel extends Model
 
         $rows = $this->getChilds($id);
        
-        foreach($rows as $row)
+        foreach($rows as &$row)
         {          
             $row->child = $this->makeTree($row->id);
   
