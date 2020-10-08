@@ -24,7 +24,7 @@ class FieldModel extends Model
     /**
      * 
      */
-    public function tmp($parent_id=0)
+    public function getChilds($parent_id=0)
     {
         $sql = "SELECT * FROM ".$this->table." WHERE `parent_id` = ".$parent_id;
         $rows = $this->connect->query($sql)->fetchAll(PDO::FETCH_OBJ);
@@ -38,7 +38,7 @@ class FieldModel extends Model
     public function makeTree($id=0)
     {
 
-        $rows = $this->tmp($id);
+        $rows = $this->getChilds($id);
        
         foreach($rows as $row)
         {          
@@ -50,11 +50,11 @@ class FieldModel extends Model
 
     }
 
-    public function gg()
+    public function getTree()
     {
-        $t = $this->makeTree();
+        $tree = $this->makeTree();
        
-        return $t;
+        return $tree;
     }
         
     

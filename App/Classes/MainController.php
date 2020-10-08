@@ -15,7 +15,7 @@ class MainController extends Controller implements MakeValueInterface
         //$rows = $model->all();
         
        
-        $rows = $model->gg();
+        $rows = $model->getTree();
     
         return $this->view('home',$rows);
     }
