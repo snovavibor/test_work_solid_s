@@ -69,8 +69,6 @@ public function create($param,$value)
    
     $res = $result->execute($value);
 
-    //return $res;
-    
     
     //TO DO:придумать что делать после успешной записи
     
@@ -110,16 +108,24 @@ public function update()
 
 public function delAll()
 {
-   
-
-    $sql = "DELETE FROM ".$this->table;
+  
+    $sql = "TRUNCATE TABLE ".$this->table;
     $result = $this->connect->exec($sql);
     return $this->all();
    
   
 }
 
+public function destroy($str)
+{
 
+    $sql = "DELETE FROM {$this->table} WHERE `id` IN ( {$str} )";
+    
+    $result = $this->connect->exec($sql);
+    
+    return $result ?? false;
+    
+}
 
 
 

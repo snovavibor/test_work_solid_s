@@ -15,7 +15,8 @@
   </head>
   
   <body>
-  
+  <div id="mainView">
+
   <div class="container">
   <div class="row">
     <div class="col">
@@ -33,6 +34,8 @@
 
   
 
+  
+  </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     

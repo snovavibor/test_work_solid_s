@@ -32,12 +32,7 @@ $(document).ready(function () {
 
                     success:function(result){
                         
-                            // console.log(elem);
-                            // // console.log(this.closest("div"));
-                            // elem.append().html(result);
-                       
-                            
-                            //location.reload();
+                            // console.log(elem);                          
                 
             }
 
@@ -86,7 +81,9 @@ $(document).ready(function () {
 
 
 
-    
+    /**
+     * for delete all Tree
+     */
     $('#delTree').on('click', function(){
        
         let elem = this.closest('div');
@@ -97,10 +94,54 @@ $(document).ready(function () {
             contentType:false,
             cache: false,
             success: function(result){
-                console.log(result);
+                //console.log(result);
                 $(elem).children().not('button').remove();
             }
         });
     })
+
+
+
+    /**
+     * for delete childs one parent
+     * 
+     */
+    $('.deleteChild').on('click', function(e){
+        e.preventDefault;
+        let elem = this;
+        let idElem = $( $(this).parent() ).children('input[name ="parent_id"]').val();
+        //console.log(idElem);
+        $.ajax({
+            type:"POST",
+            url: "delchild",
+            data:{
+                id:idElem,
+                action:'delchild'
+            },
+            cache: false,
+            success: function(result){
+               //console.log(result);
+                $('#mainView').html(result);
+                
+            }
+        });
+
+    })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 });

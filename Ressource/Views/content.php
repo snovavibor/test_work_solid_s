@@ -26,7 +26,8 @@ function rekursiveRender($rows)
         foreach ($param as &$row) {
 ?>
 
-          <div class="row p-2">
+         
+          <div class="row p-2" >
             <div class="col">
             <div class="field ">
               
@@ -59,7 +60,7 @@ function rekursiveRender($rows)
 
         </div>
       </div>
-            
+           
 <?php
            
              }

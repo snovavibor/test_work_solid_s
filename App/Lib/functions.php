@@ -25,3 +25,18 @@ function dd($param)
     
     die();
 }
+
+
+/**
+ * make new array from send array 
+ * @param array $array  array of values
+ * @param string $key key of array for to make new array
+ */
+function makeArrayOfKey(&$array,$key)
+{
+   
+    return array_column($array,$key);
+    
+}
+
+
