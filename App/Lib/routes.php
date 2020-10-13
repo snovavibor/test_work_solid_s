@@ -21,4 +21,12 @@ return [
         'controller'=>'main',
         'action' =>'delchild'
     ],
+    'editname'=>[
+        'controller'=>'main',
+        'action'=> 'edit'
+    ],
+    'update'=>[
+        'controller'=>'main',
+        'action'=> 'update'
+    ],
 ];

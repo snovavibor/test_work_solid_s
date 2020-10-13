@@ -7,15 +7,12 @@ class MainController extends Controller implements MakeValueInterface
     
     public function index(){
 
-        //$id=2;
+       
         if($action = $_POST['action']){
             $this->$action();
         }
    
         $model = new FieldModel();
-        
-        //$rows = $model->where($id);
-        //$rows = $model->all();
         
        
         $rows = $model->getTree();
@@ -24,6 +21,9 @@ class MainController extends Controller implements MakeValueInterface
     }
 
 
+    /**
+     * add new field
+     */
     public function add(){
 
         $valueForm = $_POST;
@@ -36,6 +36,7 @@ class MainController extends Controller implements MakeValueInterface
       
        
          header('Location:/');
+         
 
     }
 
@@ -54,6 +55,10 @@ class MainController extends Controller implements MakeValueInterface
 
 
 
+    /**
+     * delete all fields
+     * @return view home page with start values(0)
+     */
     public function delall(){
 
         $model = new FieldModel();
@@ -69,6 +74,11 @@ class MainController extends Controller implements MakeValueInterface
     }
 
 
+    /**
+     * delete childs field
+     * get values from $_POST($id field)
+     * @return view with deleted childs of field
+     */
     public function delchild()
     {
 
@@ -89,11 +99,52 @@ class MainController extends Controller implements MakeValueInterface
         $str_for_sql = implode(',',$arrKeys);
         $res = $model->destroy($str_for_sql);
         
+        //TO DO: if $res !=true ...
        
         $rows = $model->getTree();
         
         return $this->view('home',$rows);
         
+    }
+
+    /**
+     * @return view form for edit name field
+     */
+    public function edit()
+    {
+      
+        $model = new FieldModel();
+        $row = $model->where($_POST['id']);
+     
+        return $this->renderBlock('_editName',$row);
+       
+    }
+
+    /**
+     * update name field
+     * in BD
+     * get values from $_POST form(Views/_editName.php)
+     * @return view with update name field
+     */
+    public function update()
+    {
+        $id = $_POST['id'];
+        
+        $arr = $_POST;
+
+        $str_sql = makeStringForUpdate($arr);
+        
+        $model = new FieldModel();
+       
+        $res = $model->update($id,$str_sql);
+        
+        //TO DO: if $res == false ...
+        
+        
+        $rows = $model->getTree();
+        
+        return $this->view('home',$rows);
+       
     }
 
 

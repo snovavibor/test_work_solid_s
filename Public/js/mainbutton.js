@@ -32,7 +32,8 @@ $(document).ready(function () {
 
                     success:function(result){
                         
-                            // console.log(elem);                          
+                            // console.log(elem);
+                                                     
                 
             }
 
@@ -130,9 +131,86 @@ $(document).ready(function () {
 
 
 
+    $('.field_name').on('click',function(e){
+        e.preventDefault;
+        let elem = this;
+        let old_name = $(elem).text();
+        let idElem = $(this).parent().children('input[name ="parent_id"]').val();
+        $.ajax({
+            type:'POST',
+            url: 'editname',
+            data:{
+                nameField:old_name,
+                id:idElem
+            },
+            cache:false,
+            success: function(result){
+                //console.log();
+               let parent = $(elem).parent().parent();
+                $(parent).append(result);
+                $(parent).children('.content').css({"display":"none"});
+                //$(parent).children('.content').fadeOut('slow');
+ 
+            }
+        });
+    })
 
 
 
+ 
+    /**
+     * edit name field
+     */
+ $(document).on('click', function(e){
+
+       let target = $(e.target);
+       
+      let elem = this;
+      let parentElem = $('#edit_name');
+      let nodeId = $(target).attr('id')
+        
+
+      
+         if( nodeId != 'name_edit' && nodeId != 'update_name' )
+         {
+           
+            let parent = $(parentElem).parent();                   
+                    $(parent).children('.content').fadeIn('slow');
+                    $(parentElem).remove();
+                    
+         }
+         
+                    
+                    
+                })
+
+  
+    
+               
+
+                /**
+                 * update name field
+                 */
+                $(document).on('click','#update_name',function(e){
+                       e.preventDefault;
+                       let parent = $(this).parent();
+                      let form = $(parent).serialize();
+                      
+                      $.ajax({
+                          url:$(parent).attr('action'),
+                          type:$(parent).attr('method'),
+                          data:form,
+                          cache:false,
+                          success:function(result)
+                          {
+                              //console.log(result);
+                              $('#mainView').html(result);
+                          }
+                      });
+                   })
+                
+                
+               
 
 
 

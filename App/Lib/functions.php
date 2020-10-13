@@ -40,3 +40,22 @@ function makeArrayOfKey(&$array,$key)
 }
 
 
+/**
+ * make string for sql query update with values(name field for update)
+ * @param array $arr
+ */
+function makeStringForUpdate(&$arr)
+{
+    $tmp_arr =[];
+    
+     unset($arr["id"]);
+
+     foreach($arr as $key => $value)
+     {
+        $tmp_arr[] = $key.'="'.$value.'"';
+     }
+    
+    return implode(',',$tmp_arr);
+}
+
+

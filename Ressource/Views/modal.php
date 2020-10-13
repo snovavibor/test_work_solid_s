@@ -1,7 +1,9 @@
 <!-- Modal -->
-<form action="form" method="POST">
 
 <div class="modal fade" id="mainBtnModal" tabindex="-1" aria-labelledby="mainBtnModalLabel" aria-hidden="true">
+
+<form action="form" method="POST">
+
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -25,8 +27,9 @@
       </div>
     </div>
   </div>
-</div>
+
 </form>
 
+</div>
 
     

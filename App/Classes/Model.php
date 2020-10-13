@@ -101,8 +101,15 @@ public function makeStringforSql($fields)
 }
 
 
-public function update()
+public function update(&$id,&$strSql)
 {
+
+    $sql = "UPDATE {$this->table} SET {$strSql} WHERE id={$id}";
+   
+    $result = $this->connect->exec($sql);
+    
+    return $result ?? false;
+   
     
 }
 
