@@ -1,7 +1,4 @@
 
-    <p class="text-center">this page home </p>
-
-
     <div class="container">
   <div class="row">
     <div class="col">
@@ -26,7 +23,7 @@
     <button type="button" class="btn btn-primary add_field"  data-target="#mainBtnModal" id="bat">
     +
     </button>
-    <button type="button" class="btn btn-danger" id="delTree"> - </button>
+    <button type="button" class="btn btn-danger" id="delTree" data-target="#mainBtnModal" > - </button>
     
 
     

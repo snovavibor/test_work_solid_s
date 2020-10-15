@@ -1,8 +1,78 @@
 
 $(document).ready(function () {
 
+/***************************************************************************************************
+ * *************************************************************************************************
+ * library functions for work js 
+ *  
+ */
+
+                    /**
+                    * timer finalcontdown
+                    * @param {int} from 
+                    * @param {int} to 
+                    */
+                   function renderTimer(from, to) {
+                        
+                    let current = from;
+                
+                    var timerId = setInterval(function() {
+
+                    $('#timer').text(current);
+
+                    if (current == to || !$('#mainBtnModal').is('.show')) {
+
+                        clearInterval(timerId);
+
+                        $('#mainBtnModal').modal('hide');
+                    }
+
+                    current--;
+                    }, 1000);
+                }
+
+                /**
+                 * delete all fields
+                 * @param {node} btn 
+                 */
+              function dellAllAjax(btn)
+              {
+                let elem = btn.children('div');
+                let form = $('#mainBtnModal form');
+                
+                //console.log($(form).attr('method'));
+
+                    $.ajax({
+                        type:$(form).attr('method'),
+                        url:$(form).attr('action'),
+                        data: form.serialize(), 
+                        cache: false,
+
+                        beforeSend: function(){
+                    
+                            $('#mainBtnModal').modal('hide');
+                        },
+
+                        success: function(result){
+                            //console.log(result);
+                            if(result)
+                            {
+                                $('#root_make_block').children('div').html(result); 
+                            }
+                           
+                        }
+                    });
+              } 
+
+/**********************************************************************************************************
+ * *********************************************************************************************************
+ */
 
 
+/**
+ * maked visible block add fields
+ * if block not visible
+ */
     $('#create_root').on('click',function(){
 
         if($('#root_make_block').hasClass('d-none')){
@@ -12,7 +82,9 @@ $(document).ready(function () {
     })
     
 
-       
+       /**
+        * send form for add field
+        */
             $( 'form #fields_form' ).submit( function( e ) {       
                
                 e.preventDefault();
@@ -64,11 +136,26 @@ $(document).ready(function () {
             
         sessionStorage.setItem('parent_id',parent_id);
     
+        /********************************************************************************************
+        * пришлось выкрутиться из неправильно (используется одно окно для добавления поля и удаления всех полей)
+        * спланированного вызова модального окна
+        *происходит типа подмены видимости содержимого для различных целей
+         */
+        if($('#dAll'))
+            {
+                 $('#dAll').remove();
+                 
+            }
+            $('#mainBtnModal form').attr('action','form');
+            $('#mainBtnModal form').children('div').fadeIn('fast');
+        /**
+         * ***********************************************************************************************
+         */
 
         $('#bat').attr('data-toggle','modal');
 
        
-    })
+    });
 
 
 /**
@@ -78,28 +165,28 @@ $(document).ready(function () {
        
         $('#input_parent_id').remove();
         
-    })
+    });
 
 
 
     /**
      * for delete all Tree
      */
-    $('#delTree').on('click', function(){
+    // $('#delTree').on('click', function(){
        
-        let elem = this.closest('div');
+    //     let elem = this.closest('div');
 
-        $.ajax({
-            type:"post",
-            url:"delall",
-            contentType:false,
-            cache: false,
-            success: function(result){
-                //console.log(result);
-                $(elem).children().not('button').remove();
-            }
-        });
-    })
+    //     $.ajax({
+    //         type:"post",
+    //         url:"delall",
+    //         contentType:false,
+    //         cache: false,
+    //         success: function(result){
+    //             //console.log(result);
+    //             $(elem).children().not('button').remove();
+    //         }
+    //     });
+    // })
 
 
 
@@ -127,7 +214,7 @@ $(document).ready(function () {
             }
         });
 
-    })
+    });
 
 
 
@@ -153,7 +240,7 @@ $(document).ready(function () {
  
             }
         });
-    })
+    });
 
 
 
@@ -179,10 +266,8 @@ $(document).ready(function () {
                     $(parentElem).remove();
                     
          }
-         
-                    
-                    
-                })
+              
+                });
 
   
     
@@ -207,19 +292,69 @@ $(document).ready(function () {
                               $('#mainView').html(result);
                           }
                       });
-                   })
+                   });
                 
                 
                
 
+                   
+                   $(document).on('click', function(e)
+                   {
+                    e.preventDefault;
+                    let target = $(e.target);
+                    let nodeId = $(target).attr('id');
+
+                    if( nodeId == 'btn_del_all')
+                               {
+                                console.log(nodeId);
+                                 btn = $('#root_make_block');
+                                dellAllAjax(btn);
+                               }
+                   
+                    if( nodeId == 'delTree')
+                    {
+                        
+                    
+                       
+                       $.ajax({
+                           url:'predeleteAll',
+                           type:'POST',
+                           data:{id:0},
+                           success:function(result)
+                           {
+                              
+                               if($('#dAll'))
+                               {
+                                $('#dAll').remove();
+                               }
+
+                              let oldForm = $('#mainBtnModal').children('form');
+                              $(oldForm).children('div').css({'display':'none'});
+                              $(oldForm).append(result);
+                              $(oldForm).attr('action','delall');
+                             
+                              $('#dAll').css({'display':'block'});
+
+                               $('#mainBtnModal').modal('show');
+
+                                   renderTimer(20,0);
+                                   
+                                  
+                               
+                               $('#delTree').attr('data-toggle','modal');
+
+                               
+
+                           }
+                       });
+
+                    }
+
+
+                   });
 
 
 
-
-
-
-
-
-
+                   
 
 });

@@ -20,9 +20,12 @@
   <div class="container">
   <div class="row">
     <div class="col">
+        <div class="title_content m-3">
         <h1>
             Test worked
         </h1>
+        <b>Для изменения имени поля требуется кликнуть на поле с именем один раз</b>
+        </div>
     </div>
     
   </div>

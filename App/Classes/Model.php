@@ -13,17 +13,8 @@ abstract class Model
 
 public function __construct()
 {   
-    try
-    {
-
-        $this->connect = new PDO('mysql:host=localhost;dbname=solid_solution;charset=utf8', 'root', '');
-        $this->connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-    }catch (PDOException $e)
-     {
-        //TO DO: make error class
-        die($e->getMessage()) ;
-    };
+    
+    $this->connect = Db::connect();
     
 }
 

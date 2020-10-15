@@ -25,7 +25,7 @@ class MainController extends Controller implements MakeValueInterface
      * add new field
      */
     public function add(){
-
+       
         $valueForm = $_POST;
        
         $valueforCreate = $this->makeValueforCreate($valueForm);
@@ -34,10 +34,9 @@ class MainController extends Controller implements MakeValueInterface
         
        $result = $model->create($valueForm,$valueforCreate);
       
-       
+      
          header('Location:/');
-         
-
+      
     }
 
 
@@ -60,10 +59,19 @@ class MainController extends Controller implements MakeValueInterface
      * @return view home page with start values(0)
      */
     public function delall(){
-
-        $model = new FieldModel();
-        $model->delAll();
-        return $this->renderBlock('content',0);
+       
+      
+        if($_POST['parent_id'] == 'all')
+        {
+           
+            $model = new FieldModel();
+            $model->delAll();
+            return $this->renderBlock('content',0);
+           
+        }else{
+            //TO DO:...
+        }
+        
     }
 
 
@@ -75,7 +83,7 @@ class MainController extends Controller implements MakeValueInterface
 
 
     /**
-     * delete childs field
+     * delete childs of field
      * get values from $_POST($id field)
      * @return view with deleted childs of field
      */
@@ -145,6 +153,14 @@ class MainController extends Controller implements MakeValueInterface
         
         return $this->view('home',$rows);
        
+    }
+
+    public function predelete()
+    {
+        if($_POST['id'] == 0)
+        {
+            return $this->renderBlock('_areyoushureModal',0);
+        }
     }
 
 

@@ -29,4 +29,8 @@ return [
         'controller'=>'main',
         'action'=> 'update'
     ],
+    'predeleteAll'=>[
+        'controller'=>'main',
+        'action'=> 'predelete'
+    ],
 ];
