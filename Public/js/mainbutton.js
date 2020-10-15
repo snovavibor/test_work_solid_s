@@ -170,27 +170,6 @@ $(document).ready(function () {
 
 
     /**
-     * for delete all Tree
-     */
-    // $('#delTree').on('click', function(){
-       
-    //     let elem = this.closest('div');
-
-    //     $.ajax({
-    //         type:"post",
-    //         url:"delall",
-    //         contentType:false,
-    //         cache: false,
-    //         success: function(result){
-    //             //console.log(result);
-    //             $(elem).children().not('button').remove();
-    //         }
-    //     });
-    // })
-
-
-
-    /**
      * for delete childs one parent
      * 
      */
