@@ -159,7 +159,7 @@ class MainController extends Controller implements MakeValueInterface
     {
         if($_POST['id'] == 0)
         {
-            return $this->renderBlock('_areyoushureModal',0);
+            return $this->renderBlock('_confirmModal',0);
         }
     }
 

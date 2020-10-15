@@ -316,7 +316,7 @@ $(document).ready(function () {
 
                                $('#mainBtnModal').modal('show');
 
-                                   renderTimer(20,0);
+                                   renderTimer(10,0);
                                    
                                   
                                
